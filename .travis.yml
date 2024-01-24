@@ -1,0 +1,9 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t burnsmarty/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true burnsmarty/docker-react npm run test
